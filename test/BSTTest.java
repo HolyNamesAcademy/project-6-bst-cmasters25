@@ -20,9 +20,8 @@ public class BSTTest{
     public void containsTestDoesNotContainTheSearchValue() {
         BST tree = new BST(new Node(9));
         tree.add(5); tree.add(2); tree.add(4);
-        /**
-         * TO DO: Complete this test
-         */
+        boolean value = tree.contains(3);
+        assertFalse(value);
     }
 
     /**

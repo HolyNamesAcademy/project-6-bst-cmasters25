@@ -29,4 +29,6 @@ public class Node {
     public Node getRight(){
         return right;
     }
+    public void setLeft(Node n){left = n;}
+    public void setRight(Node n){right = n;}
 }

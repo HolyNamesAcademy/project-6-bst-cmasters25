@@ -27,7 +27,19 @@ public class BST {
      */
 
     public boolean contains(int num){
-        return true;// modify code to behave properly
+        return contains(head, num);
+    }
+
+    private boolean contains(Node curr, int num){
+        if(curr!=null) {
+            if(curr.getNumber() == num)
+                return true;
+            else if (num < curr.getNumber())
+                contains(curr.getLeft(), num);
+            else
+                contains(curr.getRight(), num);
+        }
+        return false;
     }
 
     /**
@@ -35,7 +47,7 @@ public class BST {
      */
 
     public void displayPreOrder(){
-
+        displayPreOrder(head);
     }
 
     /**
@@ -44,7 +56,11 @@ public class BST {
      */
 
     private void displayPreOrder(Node curr){
-
+        if(curr!=null){
+            System.out.print(curr.getNumber() + " ");
+            displayPreOrder(curr.getLeft());
+            displayPreOrder(curr.getRight());
+        }
     }
 
     /**
@@ -86,7 +102,11 @@ public class BST {
      */
 
     public boolean add(int n){
-        return true;// modify code to behave properly
+        Node answer = add(head, new Node(n));
+        if(answer==null)
+            return false;
+        return true;
+
     }
 
     /**
@@ -95,8 +115,19 @@ public class BST {
      * @param n the node to add
      */
 
-    private void add(Node curr, Node n){
-
+    private Node add(Node curr, Node n){
+        if(curr==null){
+            curr = n;
+            return curr;
+        }
+        if(curr.getNumber()<n.getNumber()){
+            curr.setRight(add(curr.getLeft(), n));
+            return curr;}
+        else if(curr.getNumber()>n.getNumber()){
+            curr.setLeft(add(curr.getLeft(), n));
+            return curr;}
+        else
+            return null;
     }
 
     /**
@@ -106,7 +137,9 @@ public class BST {
      */
 
     public boolean remove(int n){
-        return true;// modify code to behave properly
+        if(contains(n))
+            return false;
+        return true;
     }
 
     /**
