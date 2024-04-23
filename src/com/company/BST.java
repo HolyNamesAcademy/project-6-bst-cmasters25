@@ -35,9 +35,9 @@ public class BST {
             if(curr.getNumber() == num)
                 return true;
             else if (num < curr.getNumber())
-                contains(curr.getLeft(), num);
+                return contains(curr.getLeft(), num);
             else
-                contains(curr.getRight(), num);
+                return contains(curr.getRight(), num);
         }
         return false;
     }
@@ -68,7 +68,7 @@ public class BST {
      */
 
     public void displayInOrder(){
-
+        displayInOrder(head);
     }
 
     /**
@@ -76,14 +76,18 @@ public class BST {
      * @param curr the current node to print
      */
     private void displayInOrder(Node curr){
-
+        if(curr!=null){
+            displayInOrder(curr.getLeft());
+            System.out.print(curr.getNumber() + " ");
+            displayInOrder(curr.getRight());
+        }
     }
 
     /**
      * TO DO: prints the post order version of the BST
      */
     public void displayPostOrder(){
-
+        displayPostOrder(head);
     }
     /**
      *  TO DO : helper recursive method to display post order
@@ -91,7 +95,11 @@ public class BST {
      */
 
     private void displayPostOrder(Node curr){
-
+        if(curr!=null){
+            displayPostOrder(curr.getLeft());
+            displayPostOrder(curr.getRight());
+            System.out.print(curr.getNumber() + " ");
+        }
     }
 
     /**
@@ -102,6 +110,8 @@ public class BST {
      */
 
     public boolean add(int n){
+        if(contains(n))
+            return false;
         Node answer = add(head, new Node(n));
         if(answer==null)
             return false;

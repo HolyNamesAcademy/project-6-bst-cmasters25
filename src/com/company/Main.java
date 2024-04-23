@@ -36,9 +36,9 @@ public class Main {
                         int num = scanner.nextInt();
                         boolean val = tree.add(num);
                         if (val)
-                            System.out.println("Item successfully removed.");
+                            System.out.println("Item successfully added.");
                         else
-                            System.out.println("No such item to remove.");
+                            System.out.println("Item is already in tree.");
 
                         break;
                     }
