@@ -63,14 +63,17 @@ public class Main {
                     }
                     case "preorder": {
                         tree.displayPreOrder();
+                        System.out.println("\nPreOrder Happened Successfully");
                         break;
                     }
                     case "inorder": {
                         tree.displayInOrder();
+                        System.out.println("\nInOrder Happened Successfully");
                         break;
                     }
                     case "postorder": {
                         tree.displayPostOrder();
+                        System.out.println("\nPostOrder Happened Successfully");
                         break;
                     }
 

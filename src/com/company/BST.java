@@ -112,6 +112,10 @@ public class BST {
     public boolean add(int n){
         if(contains(n))
             return false;
+        if(head==null){
+            head = new Node(n);
+            return true;
+        }
         Node answer = add(head, new Node(n));
         if(answer==null)
             return false;
@@ -147,8 +151,9 @@ public class BST {
      */
 
     public boolean remove(int n){
-        if(contains(n))
+        if(!contains(n))
             return false;
+        remove(head, n);
         return true;
     }
 
@@ -159,7 +164,13 @@ public class BST {
      */
 
     private void remove(Node curr, int n){
-
+        if(curr.getNumber()==n){
+            makeDeletion(curr, n);
+        }
+        else if(curr.getNumber()>n)
+            remove(curr.getLeft(), n);
+        else
+            remove(curr.getRight(), n);
     }
 
     /**

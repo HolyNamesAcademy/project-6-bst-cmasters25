@@ -59,6 +59,11 @@ public class BSTTest{
      */
     @Test
     public void removeAValueInTree() {
+        BST tree = new BST(new Node(7));
+        tree.add(3); tree.add(4); tree.add(2);
+        boolean answer = tree.remove(4);
+        assertTrue(answer);
+        //THIS DOES NOT WORK
     }
 
     /**
@@ -66,5 +71,9 @@ public class BSTTest{
      */
     @Test
     public void removeAValueNotInTree() {
+        BST tree = new BST(new Node(7));
+        tree.add(3); tree.add(4); tree.add(2);
+        boolean answer = tree.remove(5);
+        assertFalse(answer);
     }
 }
