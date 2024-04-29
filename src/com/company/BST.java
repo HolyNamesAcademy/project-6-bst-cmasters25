@@ -27,7 +27,19 @@ public class BST {
      */
 
     public boolean contains(int num){
-        return true;// modify code to behave properly
+        return contains(head, num);
+    }
+
+    private boolean contains(Node curr, int num){
+        if(curr!=null) {
+            if(curr.getNumber() == num)
+                return true;
+            else if (num < curr.getNumber())
+                return contains(curr.getLeft(), num);
+            else
+                return contains(curr.getRight(), num);
+        }
+        return false;
     }
 
     /**
@@ -35,7 +47,7 @@ public class BST {
      */
 
     public void displayPreOrder(){
-
+        displayPreOrder(head);
     }
 
     /**
@@ -44,7 +56,11 @@ public class BST {
      */
 
     private void displayPreOrder(Node curr){
-
+        if(curr!=null){
+            System.out.print(curr.getNumber() + " ");
+            displayPreOrder(curr.getLeft());
+            displayPreOrder(curr.getRight());
+        }
     }
 
     /**
@@ -52,7 +68,7 @@ public class BST {
      */
 
     public void displayInOrder(){
-
+        displayInOrder(head);
     }
 
     /**
@@ -60,14 +76,18 @@ public class BST {
      * @param curr the current node to print
      */
     private void displayInOrder(Node curr){
-
+        if(curr!=null){
+            displayInOrder(curr.getLeft());
+            System.out.print(curr.getNumber() + " ");
+            displayInOrder(curr.getRight());
+        }
     }
 
     /**
      * TO DO: prints the post order version of the BST
      */
     public void displayPostOrder(){
-
+        displayPostOrder(head);
     }
     /**
      *  TO DO : helper recursive method to display post order
@@ -75,7 +95,11 @@ public class BST {
      */
 
     private void displayPostOrder(Node curr){
-
+        if(curr!=null){
+            displayPostOrder(curr.getLeft());
+            displayPostOrder(curr.getRight());
+            System.out.print(curr.getNumber() + " ");
+        }
     }
 
     /**
@@ -86,7 +110,17 @@ public class BST {
      */
 
     public boolean add(int n){
-        return true;// modify code to behave properly
+        if(contains(n))
+            return false;
+        if(head==null){
+            head = new Node(n);
+            return true;
+        }
+        Node answer = add(head, new Node(n));
+        if(answer==null)
+            return false;
+        return true;
+
     }
 
     /**
@@ -95,8 +129,19 @@ public class BST {
      * @param n the node to add
      */
 
-    private void add(Node curr, Node n){
-
+    private Node add(Node curr, Node n){
+        if(curr==null){
+            curr = n;
+            return curr;
+        }
+        if(curr.getNumber()<n.getNumber()){
+            curr.setRight(add(curr.getLeft(), n));
+            return curr;}
+        else if(curr.getNumber()>n.getNumber()){
+            curr.setLeft(add(curr.getLeft(), n));
+            return curr;}
+        else
+            return null;
     }
 
     /**
@@ -106,7 +151,10 @@ public class BST {
      */
 
     public boolean remove(int n){
-        return true;// modify code to behave properly
+        if(!contains(n))
+            return false;
+        remove(head, n);
+        return true;
     }
 
     /**
@@ -116,7 +164,12 @@ public class BST {
      */
 
     private void remove(Node curr, int n){
-
+        if(curr.getNumber()==n)
+            makeDeletion(curr, n);
+        else if(curr.getNumber()>n)
+            remove(curr.getLeft(), n);
+        else
+            remove(curr.getRight(), n);
     }
 
     /**

@@ -36,9 +36,9 @@ public class Main {
                         int num = scanner.nextInt();
                         boolean val = tree.add(num);
                         if (val)
-                            System.out.println("Item successfully removed.");
+                            System.out.println("Item successfully added.");
                         else
-                            System.out.println("No such item to remove.");
+                            System.out.println("Item is already in tree.");
 
                         break;
                     }
@@ -63,14 +63,17 @@ public class Main {
                     }
                     case "preorder": {
                         tree.displayPreOrder();
+                        System.out.println("\nPreOrder Happened Successfully");
                         break;
                     }
                     case "inorder": {
                         tree.displayInOrder();
+                        System.out.println("\nInOrder Happened Successfully");
                         break;
                     }
                     case "postorder": {
                         tree.displayPostOrder();
+                        System.out.println("\nPostOrder Happened Successfully");
                         break;
                     }
 
@@ -83,9 +86,6 @@ public class Main {
                         break;
                     }
                 }
-
-
-
         }
     }
 }
