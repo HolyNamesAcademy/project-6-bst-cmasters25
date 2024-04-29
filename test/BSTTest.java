@@ -63,7 +63,7 @@ public class BSTTest{
         tree.add(3); tree.add(4); tree.add(2);
         boolean answer = tree.remove(4);
         assertTrue(answer);
-        //THIS DOES NOT WORK
+        //REMOVE DOES NOT WORK
     }
 
     /**

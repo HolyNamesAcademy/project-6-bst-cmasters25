@@ -164,9 +164,8 @@ public class BST {
      */
 
     private void remove(Node curr, int n){
-        if(curr.getNumber()==n){
+        if(curr.getNumber()==n)
             makeDeletion(curr, n);
-        }
         else if(curr.getNumber()>n)
             remove(curr.getLeft(), n);
         else
